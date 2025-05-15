@@ -57,6 +57,6 @@ export async function getStaticProps() {
     props: {
       articles: data.articles || [],
     },
-    revalidate: 86400, // update tiap 24 jam
+    revalidate: 1800, // update tiap 30 menit
   };
 }
