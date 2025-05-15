@@ -1,34 +1,62 @@
-import type { NextPage } from 'next';
-import news from '../data/news';
+import React from 'react';
 
-const Home: NextPage = () => {
+interface Article {
+  title: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+  publishedAt: string;
+  source: {
+    name: string;
+  };
+}
+
+interface Props {
+  articles: Article[];
+}
+
+export default function Home({ articles }: Props) {
   return (
-    <main className="max-w-4xl mx-auto p-4">
-      <h1 className="text-4xl font-extrabold mb-8 text-center">News World - Crypto News</h1>
-      <div className="space-y-8">
-        {news.map(({ id, title, summary, date, source, image }) => (
-          <article
-            key={id}
-            className="border border-gray-300 rounded-lg p-6 shadow hover:shadow-lg transition-shadow duration-300"
-          >
-            {image && (
+    <div style={{ maxWidth: 800, margin: 'auto', padding: 20, fontFamily: 'Arial, sans-serif' }}>
+      <h1 style={{ textAlign: 'center' }}>News World - Latest Finance News</h1>
+      {articles.length === 0 && <p>No news available.</p>}
+      <div>
+        {articles.map((article, index) => (
+          <div key={index} style={{ marginBottom: 40, borderBottom: '1px solid #ddd', paddingBottom: 20 }}>
+            {article.urlToImage && (
               <img
-                src={image}
-                alt={title}
-                className="w-full h-56 object-cover rounded-md mb-4"
+                src={article.urlToImage}
+                alt={article.title}
+                style={{ width: '100%', maxHeight: 300, objectFit: 'cover', borderRadius: 8 }}
               />
             )}
-            <h2 className="text-2xl font-semibold mb-2">{title}</h2>
-            <p className="text-gray-700 mb-4">{summary}</p>
-            <div className="flex justify-between text-sm text-gray-500">
-              <span>{date}</span>
-              <span>{source}</span>
-            </div>
-          </article>
+            <h3 style={{ marginTop: 10 }}>
+              <a href={article.url} target="_blank" rel="noopener noreferrer" style={{ color: '#0070f3', textDecoration: 'none' }}>
+                {article.title}
+              </a>
+            </h3>
+            <p>{article.description}</p>
+            <small style={{ color: '#666' }}>
+              {new Date(article.publishedAt).toLocaleString()} - {article.source.name}
+            </small>
+          </div>
         ))}
       </div>
-    </main>
+    </div>
   );
-};
+}
 
-export default Home;
+export async function getStaticProps() {
+  const API_KEY = process.env.NEWSAPI_API_KEY;
+  const res = await fetch(
+    `https://newsapi.org/v2/top-headlines?category=business&language=en&pageSize=15&apiKey=${API_KEY}`
+  );
+  const data = await res.json();
+
+  return {
+    props: {
+      articles: data.articles || [],
+    },
+    revalidate: 86400, // update tiap 24 jam
+  };
+}
