@@ -1,28 +1,60 @@
 const news = [
   {
-    id: 1,
-    title: "Bitcoin Hits New High in 2025",
-    summary: "Bitcoin surged past $80,000 as investor optimism grows amid ETF approvals.",
-    date: "2025-05-15",
-    source: "CoinDesk",
-    image: "/images/bitcoin-high.jpg"
+    id: '1',
+    title: 'Global Markets Rally Amid Economic Optimism',
+    summary: 'Stock markets around the world surged today as investors reacted positively to strong economic data from major economies.',
+    date: '2025-05-15',
+    source: 'World Finance Daily',
+    image: 'https://example.com/images/global-markets.jpg',
   },
   {
-    id: 2,
-    title: "Ethereum 2.0 Fully Activated",
-    summary: "Ethereum transitions to full Proof-of-Stake network, reducing energy use by 99.9%.",
-    date: "2025-05-14",
-    source: "Decrypt",
-    image: "/images/ethereum-merge.jpg"
+    id: '2',
+    title: 'Central Banks Signal Interest Rate Hikes',
+    summary: 'Several central banks hinted at potential interest rate increases to combat rising inflation, sparking market speculation.',
+    date: '2025-05-14',
+    source: 'Financial Times',
+    image: 'https://example.com/images/central-bank.jpg',
   },
   {
-    id: 3,
-    title: "Solana Surges 20% After Major Upgrade",
-    summary: "Solana announces key network upgrades and partnerships, boosting price momentum.",
-    date: "2025-05-13",
-    source: "The Block",
-    image: "/images/solana-upgrade.jpg"
-  }
+    id: '3',
+    title: 'Oil Prices Climb Amid Supply Concerns',
+    summary: 'Crude oil prices hit a new high as geopolitical tensions threaten supply chains in key production regions.',
+    date: '2025-05-13',
+    source: 'Energy News',
+    image: 'https://example.com/images/oil-prices.jpg',
+  },
+  {
+    id: '4',
+    title: 'Emerging Markets Attract Foreign Investment',
+    summary: 'Emerging economies are seeing increased foreign investment flows due to favorable growth prospects and reforms.',
+    date: '2025-05-12',
+    source: 'Market Watch',
+    image: 'https://example.com/images/emerging-markets.jpg',
+  },
+  {
+    id: '5',
+    title: 'Global Debt Levels Reach New High',
+    summary: 'The world’s total debt has reached record levels, raising concerns about long-term economic stability.',
+    date: '2025-05-11',
+    source: 'Economic Review',
+    image: 'https://example.com/images/global-debt.jpg',
+  },
+  {
+    id: '6',
+    title: 'Tech Stocks Lead Market Gains',
+    summary: 'Technology companies led the charge in today’s stock market rally, boosted by strong quarterly earnings reports.',
+    date: '2025-05-10',
+    source: 'Tech Finance',
+    image: 'https://example.com/images/tech-stocks.jpg',
+  },
+  {
+    id: '7',
+    title: 'Currency Markets Volatile Amid Trade Talks',
+    summary: 'Foreign exchange markets showed volatility as trade negotiations between major countries entered a critical phase.',
+    date: '2025-05-09',
+    source: 'FX Daily',
+    image: 'https://example.com/images/currency-markets.jpg',
+  },
 ];
 
 export default news;
